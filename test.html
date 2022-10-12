@@ -1,0 +1,23 @@
+<head>
+
+    </head>
+    <body>
+        <h1>テスト</h1>
+        <div>test</div>
+        <button id="download">DL</button>
+    
+    <script>
+        document.getElementById('download').addEventListener('click',()=>{
+            const html=document.getElementsByTagName('html')
+            const blob = new Blob([html[0].innerHTML], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob)
+            const a = document.createElement("a")
+            document.body.appendChild(a)
+            a.download = 'test.html'
+            a.href = url
+            a.click()
+            a.remove()
+            URL.revokeObjectURL(url)
+        })
+    </script>
+</body>

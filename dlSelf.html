@@ -1,0 +1,25 @@
+<head>
+
+    </head>
+    <body>
+        <h1>アイウエオ</h1>
+        <div>datestfda<div>dfa</div><div>&lt;div&gt;a&lt;/div&gt;</div></div>
+        <a href="./test.html">テスト</a>
+        <button id="download">DL</button>
+    
+    <script>
+        document.getElementById('download').addEventListener('click',()=>{
+            console.log(window.location.href.split('/').pop())
+            const html=document.getElementsByTagName('html')
+            const blob = new Blob([html[0].innerHTML], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob)
+            const a = document.createElement("a")
+            document.body.appendChild(a)
+            a.download = window.location.href.split('/').pop();
+            a.href = url
+            a.click()
+            a.remove()
+            URL.revokeObjectURL(url)
+        })
+    </script>
+</body>
